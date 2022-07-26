@@ -1,6 +1,7 @@
 import { hash } from "bcrypt"
 import { UserEntity } from "../database/entities/UserEntity";
 import { UsersRepository } from "../database/repositories/UsersRepository";
+import { AppError } from "../shared/errors";
 
 type CreateUserDTO = {
     userData: UserEntity
@@ -13,15 +14,20 @@ class CreateUserService {
 
         const userConflict = await usersRepository.findByEmail({ email });
         if (userConflict) {
-            throw new Error("User already exists!");
+            throw new AppError("User already exists!", 409);
         }
 
         const newPass = await hash(password, 10)
+
         userData.password = newPass;
+
+        if (userData?.birthDate) {
+           userData.birthDate = new Date(userData.birthDate).toISOString() as unknown as Date;
+        }
 
         const newUser = await usersRepository.create({ userData });
         if (!newUser) {
-            throw new Error("User creation failed, contact support for more details");
+            throw new AppError("User creation failed, contact support for more details", 400);
         }
         
         return newUser;
