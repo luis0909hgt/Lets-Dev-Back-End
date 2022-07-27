@@ -15,7 +15,8 @@ model User {
   token Tokens?
 
   name     String
-  email    String @unique
+  email    String  @unique
+  isAdmin  Boolean @default(false)
   password String
 
   birthDate  DateTime?
