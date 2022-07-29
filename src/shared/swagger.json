@@ -1,0 +1,83 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Let's Dev",
+      "description": "API desenvolvida no Let's DEv 2.0",
+      "termsOfService": "http://swagger.io/terms/",
+      "contact": {
+        "email": "luishenriquegt@gmail.com"
+      },
+      "version": "0.1.0"
+    },
+    "externalDocs": {
+      "description": "Veja nosso conteúdo no Notion!",
+      "url": "https://paipe.notion.site/Conte-do-Let-s-Dev-17b49ef999b04a45a5cdd0f29d6e5d6b"
+    },
+    "servers": [
+      {
+        "url": "https://localhost/7000",
+        "description": "Servidor Local"
+      }
+    ],
+    "tags": [
+        {
+        "name": "Usuário",
+        "description": "Operações sobre Usuários"
+        },
+        {
+            "name": "Sessão",
+            "description": "Operações sobre sessões de Usuários"
+        }
+    ],
+    "paths": {
+        "/users/create": {
+            "post": {
+                "tags": [
+                    "Usuário"
+                ]
+            }
+        },
+        "/users/read": { 
+            "get": {
+                "tags": [
+                    "Usuário"
+                ]
+            }
+        },
+        "/users/update": { 
+            "put": {
+                "tags": [
+                    "Usuário"
+                ]
+            }   
+        },
+        "/users/delete": { 
+            "delete": {
+                "tags": [
+                    "Usuário"
+                ]
+            }
+        },
+        "/users/all": { 
+            "get": {
+                "tags": [
+                    "Usuário"
+                ]
+            }
+        },
+        "/sessions/login": { 
+            "post": {
+                "tags": [
+                    "Sessão"
+                ]
+            }
+        },
+        "/sessions/logout": { 
+            "delete": {
+                "tags": [
+                    "Sessão"
+                ]
+            }
+        }
+    }   
+}    
